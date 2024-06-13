@@ -4,6 +4,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 from src.config.base import settings
 from src.db import get_db_collections
 from src.bot.handlers import setup_handlers
+from src.db.index import create_indexes
 
 
 class TelegramBotApp:
@@ -18,6 +19,7 @@ class TelegramBotApp:
     async def start(self):
         setup_handlers(self.dp, self.bot, self.users_collection, self.data_collection)
         self.logger.info("Starting bot polling...")
+        await create_indexes(self.data_collection)
         await self.dp.start_polling(self.bot)
 
 
