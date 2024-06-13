@@ -11,7 +11,7 @@ class BaseSettings:
         self.MONGODB_DB = os.getenv("MONGODB_DB")
         self.USERS_COLLECTION = os.getenv("USERS_COLLECTION")
         self.DATA_COLLECTION = os.getenv("DATA_COLLECTION")
-        self.TOKEN_COLLECTION = os.getenv("TOKEN_COLLECTION")
+        self.TOKEN = os.getenv("TOKEN")
 
 
 class Settings(BaseSettings):
