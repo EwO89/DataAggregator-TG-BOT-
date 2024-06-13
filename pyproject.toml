@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "dataaggregator"
+version = "0.1.0"
+description = "A Telegram bot interacting with MongoDB"
+authors = ["Andrey Kazannikov  <andrey.kazannikov@mail.ru>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+aiogram = "^3.7.0"
+motor = "^3.4.0"
+python-dotenv = "^1.0.1"
+pymongo = "^4.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
