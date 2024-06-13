@@ -24,7 +24,7 @@ class BotHandlers:
         user_name = message.from_user.first_name
         logger.info(f"Received /start command from user: {user_name}")
         try:
-            await self.data_collection.insert_one({
+            await self.users.insert_one({
                 "_id": user_id,
                 "name": user_name,
                 "created_at": datetime.now(timezone.utc)
