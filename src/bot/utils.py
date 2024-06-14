@@ -4,12 +4,23 @@ from motor.motor_asyncio import AsyncIOMotorCollection
 
 
 class DataAggregator:
-    def __init__(self, data_collection: AsyncIOMotorCollection):
+    def __init__(
+            self,
+            data_collection: AsyncIOMotorCollection
+    ) -> None:
         self.data_collection = data_collection
 
-    async def get_aggregated_data(self, dt_from: datetime, dt_upto: datetime, group_type: str):
-        dt_format = {'hour': '%Y-%m-%dT%H', 'day': '%Y-%m-%d', 'month': '%Y-%m'}[group_type]
-        iso_format = {'hour': ':00:00', 'day': 'T00:00:00', 'month': '-01T00:00:00'}[group_type]
+    async def get_aggregated_data(
+            self, dt_from: datetime,
+            dt_upto: datetime,
+            group_type: str
+    ):
+        dt_format = {
+            'hour': '%Y-%m-%dT%H', 'day': '%Y-%m-%d', 'month': '%Y-%m'
+        }[group_type]
+        iso_format = {
+            'hour': ':00:00', 'day': 'T00:00:00', 'month': '-01T00:00:00'
+        }[group_type]
 
         query = [
             {"$match": {"dt": {"$gte": dt_from, "$lte": dt_upto}}},

@@ -6,7 +6,9 @@ load_dotenv()
 
 
 class BaseSettings:
-    def __init__(self):
+    def __init__(
+            self
+    ):
         self.MONGODB_URI = os.getenv("MONGODB_URI")
         self.MONGODB_DB = os.getenv("MONGODB_DB")
         self.USERS_COLLECTION = os.getenv("USERS_COLLECTION")
@@ -14,8 +16,12 @@ class BaseSettings:
         self.TOKEN = os.getenv("TOKEN")
 
 
-class Settings(BaseSettings):
-    def __init__(self):
+class Settings(
+    BaseSettings
+):
+    def __init__(
+            self
+    ):
         super().__init__()
         self.client = AsyncIOMotorClient(self.MONGODB_URI)
         self.db = self.client[self.MONGODB_DB]

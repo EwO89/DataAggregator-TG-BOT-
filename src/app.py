@@ -8,16 +8,29 @@ from src.db.index import create_indexes
 
 
 class TelegramBotApp:
-    def __init__(self):
-        self.bot = Bot(token=settings.TOKEN)
-        self.dp = Dispatcher(storage=MemoryStorage())
+    def __init__(
+            self
+    ):
+        self.bot = Bot(
+            token=settings.TOKEN
+        )
+        self.dp = Dispatcher(
+            storage=MemoryStorage()
+        )
         self.db, self.users_collection, self.data_collection = get_db_collections()
 
         logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger(__name__)
 
-    async def start(self):
-        setup_handlers(self.dp, self.bot, self.users_collection, self.data_collection)
+    async def start(
+            self
+    ):
+        setup_handlers(
+            self.dp,
+            self.bot,
+            self.users_collection,
+            self.data_collection
+        )
         self.logger.info("Starting bot polling...")
         await create_indexes(self.data_collection)
         await self.dp.start_polling(self.bot)
