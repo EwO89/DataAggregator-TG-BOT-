@@ -13,6 +13,10 @@ motor = "^2.5.1"
 python-dotenv = "^0.19.2"
 pymongo = "^3.12.1"
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+asynctest = "^0.13.0"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
