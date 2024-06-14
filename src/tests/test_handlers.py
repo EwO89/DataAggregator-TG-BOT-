@@ -37,10 +37,18 @@ async def test_start_handler(handlers):
     user_name = "TestUser"
     user = User(id=user_id, is_bot=False, first_name=user_name)
     chat = Chat(id=user_id, type="private")
-    message = Message(message_id=1, from_user=user, chat=chat, date=datetime.now(), text='/start')
+    message = Message(
+        message_id=1,
+        from_user=user,
+        chat=chat,
+        date=datetime.now(),
+        text='/start'
+    )
     message.answer = AsyncMock()
 
-    state = FSMContext(storage=MemoryStorage(), user=message.from_user, chat=message.chat)
+    state = FSMContext(
+        storage=MemoryStorage(), user=message.from_user, chat=message.chat
+    )
 
     with patch.object(handlers.users, 'insert_one', AsyncMock()) as mock_insert:
         await handlers.start(message, state)

@@ -54,8 +54,14 @@ class BotHandlers:
             dt_from = datetime.fromisoformat(received_json['dt_from'])
             dt_upto = datetime.fromisoformat(received_json['dt_upto'])
             group_type = received_json['group_type']
-            logger.info(f"Parsed JSON with dt_from: {dt_from}, dt_upto: {dt_upto}, group_type: {group_type}")
-            answer = await self.data_aggregator.get_aggregated_data(dt_from, dt_upto, group_type)
+            logger.info(
+                f"Parsed JSON with dt_from: {dt_from}, dt_upto: {dt_upto}, group_type: {group_type}"
+            )
+            answer = await self.data_aggregator.get_aggregated_data(
+                dt_from,
+                dt_upto,
+                group_type
+            )
             await message.answer(json.dumps(answer))
             logger.info(f"Sent answer: {json.dumps(answer)}")
         except (
@@ -63,8 +69,10 @@ class BotHandlers:
                 TypeError,
                 KeyError
         ) as e:
-            error_message = ('Невалидный запрос. Пример запроса:\n {"dt_from": "2022-09-01T00:00:00", "dt_upto": '
-                             '"2022-12-31T23:59:00", "group_type": "month"}')
+            error_message = (
+                'Невалидный запрос. Пример запроса:\n {"dt_from": "2022-09-01T00:00:00", "dt_upto": '
+                '"2022-12-31T23:59:00", "group_type": "month"}'
+            )
             await message.answer(error_message)
             logger.error(f"Error processing message: {e}")
 

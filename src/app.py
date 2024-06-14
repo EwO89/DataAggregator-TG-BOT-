@@ -19,7 +19,9 @@ class TelegramBotApp:
         )
         self.db, self.users_collection, self.data_collection = get_db_collections()
 
-        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        logging.basicConfig(
+            level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
         self.logger = logging.getLogger(__name__)
 
     async def start(

@@ -58,7 +58,11 @@ class DataAggregator:
             result_data.append(data.get(current_date, 0))
 
             if group_type == 'month':
-                current_date += timedelta(days=calendar.monthrange(current_date.year, current_date.month)[1])
+                current_date += timedelta(
+                    days=calendar.monthrange(
+                        current_date.year, current_date.month
+                    )[1]
+                )
             else:
                 current_date += delta
 
