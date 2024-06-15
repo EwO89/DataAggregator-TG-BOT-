@@ -12,6 +12,7 @@ aiogram = "^3.0.0"
 motor = "^2.5.1"
 python-dotenv = "^0.19.2"
 pymongo = "^3.12.1"
+pytest-asyncio = "^0.23.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.2.2"
